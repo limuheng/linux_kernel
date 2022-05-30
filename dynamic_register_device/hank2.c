@@ -73,10 +73,10 @@ static int __init hank_init(void) {
     // A warpper macro for printk (linux/printk.h)
     pr_info("[Module][%d] Assign major number %d to Hank device driver.\n", current->pid, major_num);
  
-    // register class to /sys/class
+    // register class to /sys/class/DEVICE_NAME
     cls = class_create(THIS_MODULE, DEVICE_NAME);
 
-    // create device to /sys/class/<DEVICE_NAME>/device_name
+    // create device to /dev/device_name
     // create multiple devices
     for (i = 0; i < NUM_DEVICES; i++) {
         device_create(cls, NULL, MKDEV(major_num, i), NULL, "hank%d", i);
